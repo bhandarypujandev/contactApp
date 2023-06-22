@@ -25,7 +25,7 @@ const ContactProvider = ({ children }) => {
         const pageToFetch = pageNumber >= 0 ? pageNumber : pageInformation.page;
         setLoading(true);
         const response = await axiosInstance.get(`/contact/all?pageNumber=${pageToFetch}`);
-        setContacts(response.data?.content);
+        setContacts(response?.data?.content || []);
         setPageInformation({
           page: pageToFetch,
           size: response.data?.size,

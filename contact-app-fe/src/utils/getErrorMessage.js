@@ -1,14 +1,13 @@
 export const getErrorMessage = error => {
-  if (error.response) {
+  console.log(error);
+  if (error?.response) {
     if (error.response.status === 500) {
       return error.response.data.message;
     } else if (error.response.status === 422) {
       return 'Validation Error';
     }
-  } else if (error.request) {
-    return error.request;
   } else {
-    return error.message;
+    return error?.message || 'Something went wrong';
   }
 };
 
